@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+{% include 'used_car/nav_bar.html' %}
+
+{% block content %}
+  <div class="container">
+    <h2>Sales</h2>
+    <div class="search-box">
+      <form method="GET">
+          <input type="text" name="q" placeholder="Search" value="{{ query }}">
+          <button type="submit">Search</button>
+      </form>
+   </div>
+    {% load render_table from django_tables2 %}
+    {% render_table table %}
+  </div>
+{% endblock %}
+
+</body>
+</html> 

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+{% load render_table from django_tables2 %}
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Used Car List</title>
+    <style>
+        .logout{
+            float: right;
+            margin-bottom: 10px;
+        }    
+        .search-box {
+            float: right;
+            margin-bottom: 10px;
+        }     
+        .card-green{
+            background-color: #defad7;
+            border-radius: 10px;
+            width: 250px;
+            height: 125px;
+            margin: 10px;
+        }
+        .card-blue{
+            background-color: #d7dffa;
+            border-radius: 10px;
+            width: 250px;
+            height: 125px;
+            margin: 10px;
+        }   
+        .card-yellow{
+            background-color: #e8e8c7;
+            border-radius: 10px;
+            width: 250px;
+            height: 125px;
+            margin: 10px;
+        }   
+        .card-red{
+            background-color: #f0b3c1;
+            border-radius: 10px;
+            width: 250px;
+            height: 125px;
+            margin: 10px;
+        }                                             
+    </style>
+</head>
+<body>
+    {% include 'used_car/nav_bar.html' %}
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Icon Cards-->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4 card-blue">
+                <div class="inforide">
+                  <div class="row">
+                    <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                        <h4>Total Vehicles</h4>
+                        <h2>{{total_cars}}</h2>
+                    </div>
+                  </div>
+                </div>
+            </div>
+              <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4 card-green">
+                  <div class="inforide">
+                    <div class="row">
+                      <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                          <h4>Available Vehicles</h4>
+                          <h2>{{available_cars}}</h2>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+      
+              <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4 card-yellow" >
+                  <div class="inforide">
+                    <div class="row">
+                      <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                          <h4>Advanced Vehicles</h4>
+                          <h2>{{advanced_cars}}</h2>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+      
+              <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4 card-red">
+                  <div class="inforide">
+                    <div class="row">
+                      <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                          <h4>Closed Deals</h4>
+                          <h2>{{sold_cars}}</h2>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4 card-red">
+                <div class="inforide">
+                  <div class="row">
+                    <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                        <h4>Capital</h4>
+                        <h2>{{total_capital}}</h2>
+                    </div>
+                  </div>
+                </div>
+            </div>
+              <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4 card-yellow">
+                <div class="inforide">
+                  <div class="row">
+                    <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                        <h4>Total Sales</h4>
+                        <h2>{{total_sell_price}}</h2>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4 card-green">
+                <div class="inforide">
+                  <div class="row">
+                    <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                        <h4>Total Payments</h4>
+                        <h2>{{payment}}</h2>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4 card-blue">
+                <div class="inforide">
+                  <div class="row">
+                    <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                        <h4>Payment Due</h4>
+                        <h2>{{payment_due}}</h2>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

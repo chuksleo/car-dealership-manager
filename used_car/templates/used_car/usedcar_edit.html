@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+  {% include 'used_car/nav_bar.html' %}
+  <div class="container">
+    <h2>Edit Vehicle Details</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Update</button>
+      {% comment %} <form method="post" action="{% url 'usedcar:used_car_delete' used_car.pk %}"> {% endcomment %}
+    </form>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+  {% include 'used_car/nav_bar.html' %}
+<div class="container">
+  <h2>Add Sale Details</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
+      <span class="error text-danger">{{ form.errors.name }}</span>
+    </div>
+    <div class="form-group">
+      <label for="contact">Contact:</label>
+      <input type="text" class="form-control" id="contact" name="contact" placeholder="Enter Contact">
+      <span class="error text-danger">{{ form.errors.contact }}</span>
+    </div>
+    <div class="form-group">
+      <label for="aadhar_no">Aadhar Number:</label>
+      <input type="text" class="form-control" id="aadhar_no" name="aadhar_no" placeholder="Enter Aadhar Number">
+      <span class="error text-danger">{{ form.errors.aadhar_no }}</span>
+    </div>
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <textarea class="form-control" id="address" name="address" placeholder="Enter Address"></textarea>
+      <span class="error text-danger">{{ form.errors.address }}</span>
+    </div>
+    <div class="form-group">
+      <label for="interested_vehicle">Interested Vehicle:</label>
+      <select class="form-control" id="interested_vehicle" name="interested_vehicle">
+        <option value="" selected>Select Interested Vehicle</option>
+        {% for used_car in used_cars %}
+          <option value="{{ used_car.pk }}">{{ used_car.vehicle_name }}</option>
+        {% endfor %}
+      </select>
+      <span class="error text-danger">{{ form.errors.interested_vehicle }}</span>
+    </div>
+    <div class="form-group">
+      <label for="sell_price">Selling Price:</label>
+      <input type="number" class="form-control" id="sell_price" name="sell_price" placeholder="Enter Selling Price">
+      <span class="error text-danger">{{ form.errors.sell_price }}</span>
+    </div>
+    <div class="form-group">
+      <label for="advance_amount">Advance Amount:</label>
+      <input type="number" class="form-control" id="advance_amount" name="advance_amount" placeholder="Enter Advance Amount">
+      <span class="error text-danger">{{ form.errors.advance_amount }}</span>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+</body>
+</html>

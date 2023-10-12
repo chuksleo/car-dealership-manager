@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sold Cars List</title>
+</head>
+<body> 
+    {% include 'used_car/nav_bar.html' %}
+    <h1>Sold Cars List</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Vehicle Name</th>
+                <th>Sell Price</th>
+                <th>Bought Price</th>
+                <th>Total Expense</th>
+                <th>Profit</th>
+                <th>Sold Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in page_obj %}
+            <tr>
+                <td>{{ entry.used_car.vehicle_name }}</td>
+                <td>{{ entry.sell_price }}</td>
+                <td>{{ entry.used_car.bought_price }}</td>
+                <td>{{ entry.total_expense }}</td>
+                <td>{{ entry.profit }}</td>
+                <td>{{ entry.sold_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</body>
+</html>

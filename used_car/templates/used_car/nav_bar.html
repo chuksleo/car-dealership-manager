@@ -1,0 +1,46 @@
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{% url 'usedcar:dashboard' %}">Used Car App</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Car/Bike<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'usedcar:used_car_create' %}">Add</a></li>
+            <li><a href="{% url 'usedcar:used_car_list' %}">List</a></li> 
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Brands<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'usedcar:add_brand' %}">Add</a></li>
+            <li><a href="{% url 'usedcar:brand_list' %}">List</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sales<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'usedcar:add_customer' %}">Add</a></li>
+            <li><a href="{% url 'usedcar:customer_list' %}">Open Sales List</a></li>
+            <li><a href="{% url 'usedcar:sold_list' %}">Closed Sales List</a></li>
+          </ul>
+        </li>
+      
+
+      <li class="dropdown">
+        <a href="{% url 'usedcar:report' %}" >Report</a>
+      
+      </li>
+    </ul>
+    
+      <ul class="nav navbar-nav navbar-right">
+        {% if user.is_authenticated %}
+          <li><a class="logout btn btn-default" href="{% url 'usedcar:logout' %}">Logout</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

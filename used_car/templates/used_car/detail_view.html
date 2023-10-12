@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail View</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<style>
+    .summary{
+
+    }
+</style>
+<body>
+    {% include 'used_car/nav_bar.html' %}
+    <div class="container">
+        <div class="row">
+        <h2>Sales Summary</h2>
+
+        <div class="panel-group">
+          {% comment %} <div class="panel panel-default">
+            <div class="panel-heading">Panel with panel-default class</div>
+            <div class="panel-body">Panel Content</div>
+          </div> {% endcomment %}
+      <div class="col-sm-6">
+          <div class="panel panel-primary summary">
+            <div class="panel-heading">Car Details</div>
+            <div class="panel-body">
+                {% for used_car in used_cars %}
+                    <ul>
+                        <li><b>Brand:</b>{{used_car.brand}}</li>
+                        <li><b>Name:</b>{{used_car.vehicle_name}}</li>
+                        <li><b>Number:</b>{{used_car.vehicle_no}}</li>
+                        <li><b>Price:</b>{{used_car.purchased_price}}</li>
+                        <li><b>Status:</b>{{used_car.status}}</li>
+                        <li><b>Noc:</b>{{used_car.noc_received}}</li>
+                        <li><b>Notes:</b>{{used_car.comment}}</li>
+                    </ul>                 
+                {% endfor %}
+            </div>
+          </div>
+      
+          <div class="panel panel-success">
+            <div class="panel-heading">Customer Details</div>
+            <div class="panel-body">
+                {% for customer in customers %}
+                    <ul>
+                        <li><b>Name:</b>{{customer.name}}</li>
+                        <li><b>Aadhar:</b>{{customer.aadhar_no}}</li>
+                        <li><b>Price:</b>{{customer.sell_price}}</li>
+                        <li><b>Advance:</b>{{customer.advance_amount}}</li>
+                    </ul>                 
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="panel panel-info">
+            <div class="panel-heading"> Expense</div>
+            <div class="panel-body">
+                {% for expense in expenses %}
+                    <ul>
+                        <li><b>Date:</b>{{expense.created_at}}</li>
+                        <li><b>Spares:</b>{{expense.spares}}</li>
+                        <li><b>Labour:</b>{{expense.labour}}</li>
+                    </ul>                 
+                {% endfor %}
+            </div>
+          </div>
+      
+          <div class="panel panel-warning">
+            <div class="panel-heading">Payments</div>
+            <div class="panel-body">
+                {% for payment in payments %}
+                    <ul>
+                        <li><b>Date:</b>{{payment.payment_date}}</li>
+                        <li><b>Amount:</b>{{payment.amount}}</li>
+                    </ul>                 
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+          {% comment %} <div class="panel panel-danger">
+            <div class="panel-heading">Panel with panel-danger class</div>
+            <div class="panel-body">Panel Content</div>
+          </div> {% endcomment %}
+        </div>
+        </div>
+      </div>
+</body>
+</html>
+

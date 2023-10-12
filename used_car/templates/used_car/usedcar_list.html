@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load render_table from django_tables2 %}
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Used Car List</title>
+    <style>
+        .logout{
+            float: right;
+            margin-bottom: 10px;
+        }    
+        .search-box {
+            float: right;
+            margin-bottom: 10px;
+        }                                               
+    </style>
+     
+</head>
+<body>
+    {% include 'used_car/nav_bar.html' %}
+
+    <div class="container">
+        <div class="search-box">
+            <form method="GET">
+                <input type="text" name="q" placeholder="Search by Vehicle Name">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <h1>{{ title }}</h1>
+        {% render_table table %}
+        <div class="pagination">
+            <span class="step-links">
+                {% if all_cars.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ all_cars.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ all_cars.number }} of {{ all_cars.paginator.num_pages }}.
+                </span>
+
+                {% if all_cars.has_next %}
+                    <a href="?page={{ all_cars.next_page_number }}">next</a>
+                    <a href="?page={{ all_cars.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+    {% comment %} <a href="{% url 'usedcar:create_charges' %}" class="btn btn-default">Add Expense</a> {% endcomment %}
+    {% comment %} <ul>
+        {% for used_car in used_cars %}
+            <li>
+                <a href="{% url 'usedcar:used_car_detail' used_car.pk %}">{{ used_car.vehicle_name }}</a>
+            </li>
+        {% endfor %}
+    </ul> {% endcomment %}
+    {% comment %} <a href="{% url 'usedcar:used_car_create' %}"" class="btn btn-default"> Add New Used Car </a> {% endcomment %}
+    {% comment %} <a href="{% url 'usedcar:add_buyer' %}" class="btn btn-primary">Add Buyer</a>
+    <a href="{% url 'usedcar:add_sold' %}" class="btn btn-success">Sell</a> {% endcomment %}
+</body>
+</html>
+
+

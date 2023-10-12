@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Records</h1>
+    <form action="" method="post" >
+{% csrf_token %}
+       From: <input type="date" name="start">
+       To: <input type="date" name="end">
+       <input type="submit" value="Search">
+
+
+
+
+    </form>
+    <hr>
+    <table border="1" >
+        <tr>
+            <th>Brand-name</th>
+            <th>Vehical No</th>
+            <th>Vehicle No</th>
+            <th>Chassis No</th>
+            <th>Engine No</th>
+            <th>Finance-Name</th>
+            <th>Purchased-date</th>
+            <th>Purchased-price</th>
+            <th>Status</th>
+            <th>NOC</th>
+            <th>Comments</th>
+
+
+        </tr>
+        {%for result in data %}
+        <tr>
+            <td>{{ result.brand.brand_name }}</td>
+            <td>{{ result.vehicle_name }}</td>
+            <td>{{ result.vehicle_no }}</td>
+            <td>{{ result.chassis_no }}</td>
+          <td>{{result.engine_no}} </td> 
+          <td>{{ result.Finance_Name}}</td>
+          <td>{{ result.purchased_date }}</td>
+        <td>{{result.purchased_price}} </td> 
+
+          <td>{{ result.status }}</td>
+          <td>{{ result.noc_received }}</td>
+        <td>{{result.comment }} </td> 
+        
+
+
+
+        </tr>
+        {%endfor%}
+    </table>
+</body>
+</html>

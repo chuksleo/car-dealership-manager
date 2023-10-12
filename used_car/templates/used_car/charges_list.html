@@ -1,0 +1,5 @@
+{% for charge in charges_list %}
+    <p>{{ charge.vehicle_name }} - Spares: {{ charge.spares }}, Labour: {{ charge.labour }}</p>
+    {% comment %} <a href="{% url 'update_charges' charge.pk %}">Update</a>
+    <a href="{% url 'delete_charges' charge.pk %}">Delete</a> {% endcomment %}
+{% endfor %}

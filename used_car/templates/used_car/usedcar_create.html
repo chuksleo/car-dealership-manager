@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  {% comment %}  onsubmit="return validateForm();"<script>
+    function validateForm() {
+      var brand = document.getElementById("brand").value;
+      var vehicleName = document.getElementById("vehicle_name").value;
+      var vehicleNo = document.getElementById("vehicle_no").value;
+      var chassisNo = document.getElementById("chassis_no").value;
+      var engineNo = document.getElementById("engine_no").value;
+      var financeName = document.getElementById("Finance_Name").value;
+      var purchasedDate = document.getElementById("purchased_date").value;
+      var purchasedPrice = document.getElementById("purchased_price").value;
+      if (brand === "" || vehicleName === "" || vehicleNo === "" || chassisNo === "" || 
+          engineNo === "" || financeName === "" || purchasedDate === "" || purchasedPrice === "") {
+        alert("Please fill in all required fields.");
+        return false;
+      }
+      
+      return true;
+    } {% endcomment %}
+  </script>
+</head>
+<body>
+  {% include 'used_car/nav_bar.html' %}
+<div class="container">
+  <h2>Vehicle Details</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="brand">Brand:</label>
+      <select class="form-control" id="brand" name="brand">
+        <option value="" selected>Select Brand</option>
+        {% for brand in brands %}
+          <option value="{{ brand.id }}">{{ brand.brand_name }} - {{ brand.model_name }} ({{ brand.yom}})</option>
+        {% endfor %}
+      </select>
+      <span class="error text-danger">{{ form.errors.brand }}</span>
+    </div>
+    <div class="form-group">
+      <label for="vehicle_name">Name:</label>
+      <input type="text" class="form-control" id="vehicle_name" name="vehicle_name" placeholder="Enter Vehicle Name">
+      <span class="error text-danger">{{ form.errors.vehicle_name }}</span>
+    </div>
+    <div class="form-group">
+      <label for="vehicle_no">Number:</label>
+      <input type="text" class="form-control" id="vehicle_no" name="vehicle_no" placeholder="Enter Vehicle No">
+      <span class="error text-danger">{{ form.errors.vehicle_no }}</span>
+    </div>
+    <div class="form-group">
+      <label for="chassis_no">Chassis:</label>
+      <input type="text" class="form-control" id="chassis_no" name="chassis_no" placeholder="Enter Chassis No">
+      <span class="error text-danger">{{ form.errors.chassis_no }}</span>
+    </div>
+    <div class="form-group">
+      <label for="engine_no">Engine:</label>
+      <input type="text" class="form-control" id="engine_no" name="engine_no" placeholder="Enter Engine No">
+      <span class="error text-danger">{{ form.errors.engine_no }}</span>
+    </div>
+    <div class="form-group">
+      <label for="Finance_Name">Financer:</label>
+      <input type="text" class="form-control" id="Finance_Name" name="Finance_Name" placeholder="Enter Finance Name">
+      <span class="error text-danger">{{ form.errors.Finance_Name }}</span>
+    </div>
+    <div class="form-group">
+      <label for="purchased_date">Date Of Purchase:</label>
+      <input type="date" class="form-control" id="purchased_date" name="purchased_date" value="{{ default_date }}" max="{{ default_date }}">
+      <span class="error text-danger">{{ form.errors.status }}</span>
+    </div>
+    <div class="form-group">
+      <label for="purchased_price">Price:</label>
+      <input type="number" class="form-control" id="purchased_price" name="purchased_price" placeholder="Enter Purchased Price">
+      <span class="error text-danger">{{ form.errors.purchased_price }}</span>
+    </div>
+    {% comment %} <div class="form-group">
+      <label for="status">Status:</label>
+      <select class="form-control" id="status" name="status">
+        <option value="available">Available</option>
+        <option value="advanced">Advanced</option>
+        <option value="sold">Sold</option>
+      </select>
+      <span class="error text-danger">{{ form.errors.status }}</span>
+    </div> {% endcomment %}
+    <div class="form-group">
+      <label for="noc_received">NOC Received:</label>
+      <div class="radio">
+        <label><input type="radio" name="noc_received" value="1">Yes</label>
+      </div>
+      <div class="radio">
+        <label><input type="radio" name="noc_received" value="0">No</label>
+      </div>
+      <span class="error text-danger">{{ form.errors.noc_received }}</span>
+    </div>
+
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <textarea class="form-control" id="comment" name="comment" placeholder="Enter Comment"></textarea>
+      <span class="error text-danger">{{ form.errors.comment }}</span>
+    </div>
+    
+ <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+</body>
+</html>
